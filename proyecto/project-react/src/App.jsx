@@ -1,8 +1,13 @@
-import "./App.css";
-import kkk from "./assets/img/descargar.jpeg";
+import Card from "./components/CardComponent";
 
 function App() {
-  return <img src={kkk} alt="foto movie" srcset="" />;
+  return (
+    <div>
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  );
 }
 
 export default App;
