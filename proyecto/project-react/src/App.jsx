@@ -2,32 +2,28 @@ import { useState, useEffect } from "react";
 import Card from "./components/CardComponent";
 
 function App() {
-  const [pagina, setPagina] = useState(0);
-  const [personajes, setPersonajes] = useState([]);
+  const [personaje, setPersonaje] = useState(null);
+
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/?page=${pagina}`)
+    // Aquí estamos obteniendo el primer personaje con el ID 1
+    fetch(`https://rickandmortyapi.com/api/character/1`)
       .then((response) => response.json())
-      .then((data) => setPersonajes(data.results));
-  }, [pagina]);
-  console.log(personajes);
-  const incrementarContador = () => {
-    setPagina(pagina + 1);
-  };
+      .then((data) => setPersonaje(data));
+  }, []);
+
+  console.log(personaje);
 
   return (
     <div>
-      {personajes.length !== 0 &&
-        personajes.map((personaje) => (
-          <Card
-            key={personaje.id}
-            title={personaje.name}
-            img={personaje.image}
-            genre={personaje.gender}
-            status={personaje.status}
-          />
-        ))}
-
-      <button onClick={incrementarContador}>Siguiente</button>
+      {personaje && (
+        <Card
+          key={personaje.id}
+          title={personaje.name}
+          img={personaje.image}
+          genre={personaje.gender}
+          status={personaje.status}
+        />
+      )}
     </div>
   );
 }
