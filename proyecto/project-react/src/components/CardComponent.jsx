@@ -6,7 +6,7 @@ import "../App.css";
 const Card = (props) => {
   return (
     <>
-      <div className="container">
+      <div className="card">
         <Title title={props.title} />
         <Image url={props.img} />
         <Details genre={props.genre} status={props.status} />
@@ -16,5 +16,3 @@ const Card = (props) => {
 };
 
 export default Card;
-
-
